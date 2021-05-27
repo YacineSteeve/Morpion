@@ -1,2 +1,4 @@
 # Morpion
-Essai de création d'un jeu relativement complet
+Mostly complete game coding trial
+
+Run main.py to play
