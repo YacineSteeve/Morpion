@@ -3,7 +3,7 @@ window_resolution = (background_img_width * 5, background_img_width * 3)
 background_img_position = (0, 0)
 loading_img_width = 360
 
-loading_duration = 1
+loading_duration = 3
 
 invisible_color = (255, 255, 255, 255)
 
