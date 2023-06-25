@@ -1,4 +1,4 @@
-from global_functions import *
+from global_functions import loading_screen, play, time, clock, loading_duration
 
 clock.tick(60)
 

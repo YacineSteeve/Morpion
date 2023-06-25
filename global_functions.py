@@ -1,5 +1,6 @@
 from objects import *
 import time
+from pygame.constants import QUIT, MOUSEBUTTONDOWN
 
 
 def draw_grid():
@@ -46,13 +47,11 @@ def on_case_area(case):
 
 
 def draw_circle(center):
-    trace_sound.play()
     pygame.draw.circle(window_surface, circle_color, center, circle_radius, circle_thickness)
     pygame.display.flip()
 
 
 def draw_cross(summits):
-    trace_sound.play()
     pygame.draw.line(window_surface, cross_color, summits[0], summits[1], cross_thickness)
     pygame.display.flip()
     pygame.draw.line(window_surface, cross_color, summits[2], summits[3], cross_thickness)
@@ -115,13 +114,11 @@ def say_winner(mark, player):
     winner_surface = winner_font.render(f"{winner} a gagné!", True, winner_color)
     window_surface.blit(winner_surface, winner_position)
     pygame.display.flip()
-    win_sound.play()
 
 
 def say_equality():
     window_surface.blit(equality_surface, winner_position)
     pygame.display.flip()
-    win_sound.play()
 
 
 def draw_start(box_color):
@@ -167,9 +164,9 @@ def play():
             end = False
 
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == QUIT:
                 running = False
-            if start and (not win) and (not full) and event.type == pygame.MOUSEBUTTONDOWN:
+            if start and (not win) and (not full) and event.type == MOUSEBUTTONDOWN:
                 for case in grid:
                     if on_case_area(case):
                         if turn % 2 == 0 and case[6] == empty:
@@ -180,7 +177,7 @@ def play():
                             draw_circle(case[4])
                             case[6] = filled_with_circle
                             turn += 1
-            if (not start) and event.type == pygame.MOUSEBUTTONDOWN:
+            if (not start) and event.type == MOUSEBUTTONDOWN:
                 if start_box.collidepoint(pygame.mouse.get_pos()):
                     start = True
                     draw_start(start_box_active_color)
